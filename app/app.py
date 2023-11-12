@@ -1,4 +1,7 @@
-from flask import Flask, jsonify, request, render_template, serverless_wsgi
+from flask import Flask, jsonify, request, render_template
+from serverless_wsgi import handle_request
+import sys
+print(sys.executable)
 
 app = Flask(__name__, static_url_path='', static_folder='static')
 
@@ -14,7 +17,7 @@ def get_data():
     return jsonify(data)
 
 def handler(event, context):
-    return serverless_wsgi.handle_request(app, event, context)
+    return handle_request(app, event, context)
 
 if __name__ == '__main__':
     app.run()
