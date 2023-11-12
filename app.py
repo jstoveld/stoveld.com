@@ -1,7 +1,5 @@
 from flask import Flask, jsonify, request, render_template
 from serverless_wsgi import handle_request
-import sys
-print(sys.executable)
 
 app = Flask(__name__, static_url_path='', static_folder='static')
 
@@ -19,6 +17,11 @@ def get_data():
 def handler(event, context):
     return handle_request(app, event, context)
 
+
 if __name__ == '__main__':
-    app.run()
-    # app.run(host='0.0.0.0', port=80)
+    app.run(host='0.0.0.0', port=80)
+
+
+# if __name__ == '__main__':
+#     app.run()
+#     app.run(host='0.0.0.0', port=80)
